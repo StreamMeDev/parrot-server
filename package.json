@@ -1,12 +1,15 @@
 {
-  "name": "@streamme/simple-test-server",
+  "name": "@streammedev/simple-test-server",
   "version": "1.0.0",
   "description": "Simple http server which returns a body with information about the request such as method, pathname, query parameters, and the request body. It is useful for testing.",
   "main": "index.js",
   "keywords": [
     "test"
   ],
-  "author": "StreamMe",
+  "author": {
+		"name": "StreamMe",
+		"url": "http://github.com/streammedev"
+	},
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
