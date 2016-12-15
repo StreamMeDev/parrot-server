@@ -1,4 +1,6 @@
 # simple-test-server
+[![js-happiness-style](https://img.shields.io/badge/code%20style-happiness-brightgreen.svg)](https://github.com/JedWatson/happiness)
+
 Simple server responds to any HTTP request with details about the request.
 
 ## Install
