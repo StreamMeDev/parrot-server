@@ -36,6 +36,13 @@ server.stop();
 
 `stop(cb)` - Stops the server, then calls the (optional) callback.
 
+## CLI
+A simple cli command is available:
+
+```bash
+parrot-server --port=8080
+```
+
 ## Example
 ```javascript
 import SimpleTestServer from '@streammedev/simple-test-server';

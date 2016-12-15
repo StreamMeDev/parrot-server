@@ -1,9 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 /**
- * @class SimpleTestServer
+ * @class ParrotServer
  * */
-export default class SimpleTestServer {
+export default class ParrotServer {
 	/**
 	 * @param {number} port Port to start the http server. (Optional)
 	 * */
