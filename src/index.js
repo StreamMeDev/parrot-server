@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
  * */
 export default class SimpleTestServer {
 	/**
-	 * @param port {number} Port to start the http server. (Optional)
+	 * @param {number} port Port to start the http server. (Optional)
 	 * */
 	constructor (port) {
 		const app = this.app = express();
@@ -22,8 +22,7 @@ export default class SimpleTestServer {
 				query: req.query,
 				headers: req.headers
 			};
-			res.setHeader('Content-Type', 'application/json');
-			res.send(output);
+			res.json(output);
 		});
 	}
 

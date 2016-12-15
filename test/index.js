@@ -2,6 +2,8 @@
 import assert from 'assert';
 import SimpleTestServer from '../';
 import http from 'http';
+import url from 'url';
+import request from 'request';
 
 describe('SimpleTestServer', function () {
 	let server;
@@ -17,35 +19,26 @@ describe('SimpleTestServer', function () {
 		assert(typeof server.port === 'number', 'server.port is a number');
 	});
 	it('should make a GET request', function (done) {
-		const httpOpts = {
+		let httpOpts = {
 			method: 'GET',
-			port: server.port,
-			path: '/a/path?q=findme'
+			uri: url.format({
+				protocol: 'http',
+				hostname: 'localhost',
+				pathname: 'a/path',
+				port: server.port,
+				query: {q: 'findme'}
+			})
 		};
-		const req = http.request(httpOpts, function (res) {
-			let body = '';
-			res.on('data', function (chunk) {
-				body += chunk;
-			});
-			res.on('end', function () {
-				try {
-					assert.ok(body = JSON.parse(body), 'response body is JSON');
-					assert.strictEqual(body.method, 'GET', 'has the correct method');
-					assert.strictEqual(body.path, '/a/path', 'has the correct pathname');
-					assert.ok(body.query.q, 'has the correct query parameter');
-					assert.strictEqual(body.query.q, 'findme', 'has the correct query parameter value');
-					done();
-				} catch (e) {
-					assert.ifError(e);
-					done();
-				}
-			});
-		});
-		req.on('err', function (e) {
-			assert.ifError(e, 'error sending the request');
+		request(httpOpts, function (err, resp, body) {
+			assert.ifError(err);
+			assert.ok(resp.statusCode === 200, 'response is a 200');
+			assert.ok(body = JSON.parse(body), 'response body is JSON');
+			assert.strictEqual(body.method, 'GET', 'has the correct method');
+			assert.strictEqual(body.path, '/a/path', 'has the correct pathname');
+			assert.ok(body.query.q, 'has the correct query parameter');
+			assert.strictEqual(body.query.q, 'findme', 'has the correct query parameter value');
 			done();
 		});
-		req.end();
 	});
 	it('should make a POST request with plain text', function (done) {
 		const reqBodyText = 'text in the body';
@@ -55,7 +48,12 @@ describe('SimpleTestServer', function () {
 		const httpOpts = {
 			method: 'POST',
 			port: server.port,
-			path: `${path}?${queryParam}=${queryValue}`,
+			path: url.format({
+				pathname: path,
+				query: {
+					[queryParam]: queryValue
+				}
+			}),
 			headers: {
 				'Content-Type': 'text/plain',
 				'Content-Length': Buffer.byteLength(reqBodyText)

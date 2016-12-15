@@ -31,7 +31,8 @@
     "happiness": "^7.1.2",
     "jsdoc-to-markdown": "^2.0.1",
     "mocha": "^3.1.2",
-    "mochify": "^2.18.1"
+    "mochify": "^2.18.1",
+    "request": "^2.79.0"
   },
   "dependencies": {
     "assert": "^1.4.1",
