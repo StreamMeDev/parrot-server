@@ -28,18 +28,20 @@ export default class ParrotServer {
 
 	/**
 	 * Starts the http server.
-	 * @param  {function} cb
+	 * @param  {function} [cb]
 	 */
 	start (cb) {
 		this.server = this.app.listen(this.port, () => {
 			this.port = this.server.address().port;
-			cb();
+			if (typeof cb === 'function') {
+				cb();
+			}
 		});
 	}
 
 	/**
 	 * Stops the http server.
-	 * @param  {function} cb
+	 * @param  {function} [cb]
 	 */
 	stop (cb) {
 		this.server.close(cb);
