@@ -5,17 +5,17 @@ Simple server responds to any HTTP request with details about the request.
 
 ## Install
 ```javascript
-npm install @streammedev/simple-test-server;
+npm install @streammedev/parrot-server;
 ```
 
 ## Usage
 First, import the class:
 ```javascript
-import SimpleTestServer from '@streammedev/simple-test-server';
+import ParrotServer from '@streammedev/parrot-server';
 ```
 Next, instantiate it:
 ```javascript
-const server = new SimpleTestServer();
+const server = new ParrotServer();
 ```
 Next, start it:
 ```
@@ -45,14 +45,14 @@ parrot-server --port=8080
 
 ## Example
 ```javascript
-import SimpleTestServer from '@streammedev/simple-test-server';
+import ParrotServer from '@streammedev/parrot-server';
 import assert from 'assert';
 import request from 'request';
 
 describe('do some test', function () {
 	let testServer;
 	before(function (done) {
-		testServer = new ApiTestServer(port);
+		testServer = new ParrotServer(port);
 		testServer.start(done);
 	});
 	after(function (done) {
