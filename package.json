@@ -21,7 +21,7 @@
   "scripts": {
     "test": "npm run babel && happiness && mocha --compilers js:babel-register",
     "prepublish": "npm test",
-    "postpublish": "git push $$ git push --tags",
+    "postpublish": "git push && git push --tags",
     "babel": "babel src -d lib",
     "dev": "babel src -d lib --watch"
   },
