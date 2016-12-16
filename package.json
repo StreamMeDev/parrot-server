@@ -1,6 +1,6 @@
 {
   "name": "@streammedev/parrot-server",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple http server which returns a body with information about the request such as method, pathname, query parameters, and the request body. It is useful for testing.",
   "main": "index.js",
   "keywords": [
