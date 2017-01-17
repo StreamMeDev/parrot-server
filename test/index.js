@@ -4,6 +4,13 @@ import SimpleTestServer from '../';
 import url from 'url';
 import request from 'request';
 
+describe('module functionality', function () {
+	it('should support a simple require statement', function () {
+		const Sts = require('../');
+		assert.ok(new Sts(), 'initialize the server');
+	});
+});
+
 describe('SimpleTestServer', function () {
 	let server;
 	beforeEach(function (done) {

@@ -1,6 +1,6 @@
 {
   "name": "@streammedev/parrot-server",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple http server which returns a body with information about the request such as method, pathname, query parameters, and the request body. It is useful for testing.",
   "main": "index.js",
   "keywords": [
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.16.0",
     "babel-register": "^6.18.0",
     "happiness": "^7.1.2",
